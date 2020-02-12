@@ -5,7 +5,7 @@ import { APIGatewayProxyEvent } from 'aws-lambda'
 import { EventBridgeRepository } from '../common/event-bridge-repository'
 import { sendWebhookEvent } from './lib/main'
 
-export async function handler(event: APIGatewayProxyEvent) {
+export async function handler (event: APIGatewayProxyEvent) {
   console.log('event: ', JSON.stringify(event))
 
   const eventBusName = process.env.EVENT_BUS_NAME
@@ -23,7 +23,7 @@ export async function handler(event: APIGatewayProxyEvent) {
   await sendWebhookEvent(event, notification)
 
   return {
-    statusCode: 204,
+    statusCode: 200,
     body: null,
   }
 }
