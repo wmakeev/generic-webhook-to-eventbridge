@@ -10,16 +10,16 @@ Globals:
 
 Metadata:
   AWS::ServerlessRepo::Application:
-    Name: generic-webhook-to-eventbridge
+    Name: test-generic-webhook-to-eventbridge
     Description: "A serverless application that receives a webhook event via POST or GET HTTP method, sends the raw event data to the EventBridge, and replies with the 200 OK response to the webhook sender"
     Author: Slobodan
     SpdxLicenseId: MIT
     LicenseUrl: LICENSE
     ReadmeUrl: README.md
     Labels: ['webhook','eventbridge','event','bridge']
-    HomePageUrl: https://github.com/vacationtracker/generic-webhook-to-eventbridge
-    SemanticVersion: 1.3.3
-    SourceCodeUrl: https://github.com/vacationtracker/generic-webhook-to-eventbridge
+    HomePageUrl: https://github.com/wmakeev/generic-webhook-to-eventbridge
+    SemanticVersion: 2.0.0
+    SourceCodeUrl: https://github.com/wmakeev/generic-webhook-to-eventbridge
 
 Parameters:
   EventBusName:
@@ -72,19 +72,10 @@ Resources:
                 - events:PutEvents
               Resource: '*'
       Events:
-        WebhookPost:
+        Webhook:
           Type: HttpApi
           Properties:
-            Path: /
-            Method: POST
             ApiId: !Ref WebhookApi
-        WebhookGet:
-          Type: HttpApi
-          Properties:
-            Path: /
-            Method: GET
-            ApiId: !Ref WebhookApi
-
 Outputs:
   WebhookApiUrl:
     Description: "A webhook URL"
