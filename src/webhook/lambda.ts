@@ -5,11 +5,16 @@ import { APIGatewayProxyEvent } from 'aws-lambda'
 import { EventBridgeRepository } from '../common/event-bridge-repository'
 import { sendWebhookEvent } from './lib/main'
 
-export async function handler (event: APIGatewayProxyEvent) {
+export async function handler(event: APIGatewayProxyEvent) {
   console.log('event: ', JSON.stringify(event))
 
+  // FIXME aws-lambda is for 1.0 ver of APIGatewayProxyEvent
+  // TODO add tests
+  // @ts-ignore
+  const path: string | null = event.rawPath?.split('/')?.[1] || null
+
   const eventBusName = process.env.EVENT_BUS_NAME
-  const eventSource = process.env.EVENT_SOURCE
+  const eventSource = path ?? process.env.EVENT_SOURCE
 
   if (!eventBusName) {
     throw new Error('Webhook URL is required as "process.env.EVENT_BUS_NAME"')
