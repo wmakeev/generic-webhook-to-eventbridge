@@ -37,6 +37,8 @@ const ApiGwRequest = {
       user: null,
       userAgent: null,
     },
+    authorizer: null,
+    protocol: '',
   },
   resource: '',
 }
