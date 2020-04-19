@@ -130,4 +130,4 @@ build
 packaged.yaml
 samconfig.toml
 publish.command
-
+OUTPUTS.txt
