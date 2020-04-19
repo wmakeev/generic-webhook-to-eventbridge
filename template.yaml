@@ -10,7 +10,7 @@ Globals:
 
 Metadata:
   AWS::ServerlessRepo::Application:
-    Name: test-generic-webhook-to-eventbridge
+    Name: generic-webhook-to-eventbridge
     Description: "A serverless application that receives a webhook event via POST or GET HTTP method, sends the raw event data to the EventBridge, and replies with the 200 OK response to the webhook sender"
     Author: Slobodan
     SpdxLicenseId: MIT
